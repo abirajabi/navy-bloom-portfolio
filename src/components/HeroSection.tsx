@@ -6,22 +6,46 @@ import { useState, useEffect } from "react";
 const HeroSection = () => {
   const greetings = [
     "Hello! My Name is Naufal",
-    "你好，我叫饶丰乐",
-    "Hola! Mi nombre es Naufal",
-    "Bonjour! Je m'appelle Naufal",
-    "こんにちは！私の名前はナウファルです",
-    "안녕하세요! 제 이름은 나우팔입니다"
+    "Halo! Nama saya Naufal",
+    "مرحبا! اسمي نوفل",
+    "你好！我叫诺法尔",
+    "こんにちは！私の名前はナウファルです"
   ];
 
   const [currentGreeting, setCurrentGreeting] = useState(0);
+  const [displayedText, setDisplayedText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [charIndex, setCharIndex] = useState(0);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentGreeting((prev) => (prev + 1) % greetings.length);
-    }, 5000);
+    const currentText = greetings[currentGreeting];
+    
+    const timeout = setTimeout(() => {
+      if (!isDeleting) {
+        // Typing forward
+        if (charIndex < currentText.length) {
+          setDisplayedText(currentText.substring(0, charIndex + 1));
+          setCharIndex(charIndex + 1);
+        } else {
+          // Finished typing, wait then start deleting
+          setTimeout(() => setIsDeleting(true), 2000);
+        }
+      } else {
+        // Deleting backward
+        if (charIndex > 0) {
+          setDisplayedText(currentText.substring(0, charIndex - 1));
+          setCharIndex(charIndex - 1);
+        } else {
+          // Finished deleting, move to next greeting
+          setIsDeleting(false);
+          setCurrentGreeting((prev) => (prev + 1) % greetings.length);
+          setCharIndex(0);
+        }
+      }
+    }, isDeleting ? 50 : 100); // Faster when deleting
 
-    return () => clearInterval(interval);
-  }, [greetings.length]);
+    return () => clearTimeout(timeout);
+  }, [currentGreeting, charIndex, isDeleting, greetings]);
 
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
@@ -35,11 +59,9 @@ const HeroSection = () => {
       <div className="relative z-10 container mx-auto px-6 text-center text-white">
         <div className="animate-fade-in">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            <span 
-              key={currentGreeting}
-              className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent block animate-fade-in"
-            >
-              {greetings[currentGreeting]}
+            <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent block min-h-[1.2em]">
+              {displayedText}
+              <span className="animate-pulse">|</span>
             </span>
             <span className="block mt-4">
               Developers Name

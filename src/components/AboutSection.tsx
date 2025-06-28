@@ -1,5 +1,6 @@
 
 import { Code, Palette, Zap, Users } from "lucide-react";
+import { Flutter, NodeJs } from "lucide-react";
 
 const AboutSection = () => {
   const skills = [
@@ -25,6 +26,24 @@ const AboutSection = () => {
     }
   ];
 
+  const techStack = [
+    {
+      name: "Flutter",
+      icon: <Flutter className="h-12 w-12" />,
+      description: "Cross-platform mobile development"
+    },
+    {
+      name: "Kotlin",
+      icon: <Kotlin className="h-12 w-12" />,
+      description: "Native Android development"
+    },
+    {
+      name: "Node.js",
+      icon: <NodeJs className="h-12 w-12" />,
+      description: "Server-side JavaScript with Express"
+    }
+  ];
+
   return (
     <section className="py-20 bg-navy-50">
       <div className="container mx-auto px-6">
@@ -39,7 +58,7 @@ const AboutSection = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
           {skills.map((skill, index) => (
             <div 
               key={index}
@@ -56,6 +75,31 @@ const AboutSection = () => {
               </p>
             </div>
           ))}
+        </div>
+
+        {/* Tech Stack Section */}
+        <div className="text-center mb-12">
+          <h3 className="text-3xl md:text-4xl font-bold text-navy-800 mb-8">
+            Tech Stack
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            {techStack.map((tech, index) => (
+              <div 
+                key={index}
+                className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group text-center"
+              >
+                <div className="text-primary mb-4 group-hover:text-accent transition-colors duration-300 flex justify-center">
+                  {tech.icon}
+                </div>
+                <h4 className="text-2xl font-semibold text-navy-800 mb-3">
+                  {tech.name}
+                </h4>
+                <p className="text-navy-600 leading-relaxed">
+                  {tech.description}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
