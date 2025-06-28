@@ -44,11 +44,11 @@ const ClientSection = () => {
         {/* Client Logos */}
         <div className="text-center mb-20">
           <h3 className="text-2xl font-semibold text-navy-200 mb-12">
-            Trusted by Amazing Companies
+            My previous work partners
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
             {clients.map((client, index) => (
-              <div 
+              <div
                 key={index}
                 className="flex items-center justify-center h-20 bg-white/10 rounded-xl backdrop-blur-sm hover:bg-white/20 transition-all duration-300"
               >
@@ -69,10 +69,10 @@ const ClientSection = () => {
             Don't just take my word for it. Here's what my clients have to say about working together.
           </p>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {testimonials.map((testimonial, index) => (
-            <div 
+            <div
               key={index}
               className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl border border-white/20 hover:bg-white/15 transition-all duration-300"
             >
@@ -81,14 +81,14 @@ const ClientSection = () => {
                   <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
                 ))}
               </div>
-              
+
               <p className="text-navy-100 mb-6 leading-relaxed italic">
                 "{testimonial.content}"
               </p>
-              
+
               <div className="flex items-center">
-                <img 
-                  src={testimonial.avatar} 
+                <img
+                  src={testimonial.avatar}
                   alt={testimonial.name}
                   className="w-12 h-12 rounded-full mr-4 object-cover"
                 />

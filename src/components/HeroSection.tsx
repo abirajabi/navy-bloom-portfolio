@@ -8,8 +8,8 @@ const HeroSection = () => {
     "Hello! My Name is Naufal",
     "Halo! Nama saya Naufal",
     "مرحبا! اسمي نوفل",
-    "你好！我叫诺法尔",
-    "こんにちは！私の名前はナウファルです"
+    "你好！我叫饶丰乐",
+    "こんにちは！私はアビです"
   ];
 
   const [currentGreeting, setCurrentGreeting] = useState(0);
@@ -19,7 +19,7 @@ const HeroSection = () => {
 
   useEffect(() => {
     const currentText = greetings[currentGreeting];
-    
+
     const timeout = setTimeout(() => {
       if (!isDeleting) {
         // Typing forward
@@ -46,16 +46,15 @@ const HeroSection = () => {
 
     return () => clearTimeout(timeout);
   }, [currentGreeting, charIndex, isDeleting, greetings]);
-
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 gradient-navy"></div>
-      
+
       {/* Decorative elements */}
       <div className="absolute top-20 left-10 w-32 h-32 bg-primary/10 rounded-full blur-xl"></div>
       <div className="absolute bottom-20 right-10 w-40 h-40 bg-accent/10 rounded-full blur-xl"></div>
-      
+
       <div className="relative z-10 container mx-auto px-6 text-center text-white">
         <div className="animate-fade-in">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
@@ -63,36 +62,34 @@ const HeroSection = () => {
               {displayedText}
               <span className="animate-pulse">|</span>
             </span>
-            <span className="block mt-4">
-              Developers Name
-            </span>
           </h1>
-          
-          <p className="text-xl md:text-2xl text-navy-200 mb-8 max-w-3xl mx-auto leading-relaxed">
-            I craft digital experiences that blend beautiful design with powerful functionality. 
-            Let's bring your vision to life.
+
+          <p className="text-xl md:text-2xl text-navy-100 mb-8 max-w-3xl mx-auto leading-relaxed">
+            I craft sleek mobile apps and build the backend services that power them. Let’s bring your idea to life.
           </p>
-          
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-            <Button 
-              size="lg" 
-              className="bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white border-0 px-8 py-3 text-lg transition-all duration-300 hover:scale-105"
+            <Button
+              size="lg"
+              className="bg-gradient-to-r from-blue-500 to-cyan-500 text-navy-100 border-0 px-8 py-3 text-lg transition-all duration-300 hover:scale-105"
+              onClick={() => window.open('mailto:abinaufal71@gmail.com', '_blank')}
             >
               <Mail className="mr-2 h-5 w-5" />
               Get In Touch
             </Button>
-            
-            <Button 
-              variant="outline" 
+
+            <Button
+              variant="outline"
               size="lg"
-              className="border-navy-300 text-navy-100 hover:bg-navy-800 px-8 py-3 text-lg transition-all duration-300 hover:scale-105"
+              className="border-navy-300 text-navy-800 hover:bg-navy-800 px-8 py-3 text-lg transition-all duration-300 hover:scale-105"
+              onClick={() => window.open('https://drive.google.com/file/d/1eKvRXnReuoSYFnDMUpfz6lT2c9lWe5bj/view?usp=sharing', '_blank')}
             >
               <Download className="mr-2 h-5 w-5" />
               Download CV
             </Button>
           </div>
         </div>
-        
+
         <div className="animate-bounce mt-16">
           <ArrowDown className="h-8 w-8 text-navy-300 mx-auto" />
         </div>
