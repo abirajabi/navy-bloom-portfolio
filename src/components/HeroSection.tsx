@@ -1,8 +1,28 @@
 
 import { Button } from "@/components/ui/button";
 import { ArrowDown, Download, Mail } from "lucide-react";
+import { useState, useEffect } from "react";
 
 const HeroSection = () => {
+  const greetings = [
+    "Hello! My Name is Naufal",
+    "你好，我叫饶丰乐",
+    "Hola! Mi nombre es Naufal",
+    "Bonjour! Je m'appelle Naufal",
+    "こんにちは！私の名前はナウファルです",
+    "안녕하세요! 제 이름은 나우팔입니다"
+  ];
+
+  const [currentGreeting, setCurrentGreeting] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentGreeting((prev) => (prev + 1) % greetings.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [greetings.length]);
+
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* Background gradient */}
@@ -15,9 +35,14 @@ const HeroSection = () => {
       <div className="relative z-10 container mx-auto px-6 text-center text-white">
         <div className="animate-fade-in">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            Creative
-            <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent block">
-              Developer
+            <span 
+              key={currentGreeting}
+              className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent block animate-fade-in"
+            >
+              {greetings[currentGreeting]}
+            </span>
+            <span className="block mt-4">
+              Developers Name
             </span>
           </h1>
           
