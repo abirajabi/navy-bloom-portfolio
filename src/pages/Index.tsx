@@ -1,12 +1,27 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import HeroSection from "@/components/HeroSection";
+import AboutSection from "@/components/AboutSection";
+import WorkSection from "@/components/WorkSection";
+import ClientSection from "@/components/ClientSection";
+import ContactSection from "@/components/ContactSection";
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen">
+      <HeroSection />
+      <AboutSection />
+      <WorkSection />
+      <ClientSection />
+      <ContactSection />
+      
+      {/* Footer */}
+      <footer className="py-8 gradient-navy text-center">
+        <div className="container mx-auto px-6">
+          <p className="text-navy-200">
+            © 2024 Your Name. Crafted with passion and precision.
+          </p>
+        </div>
+      </footer>
     </div>
   );
 };
